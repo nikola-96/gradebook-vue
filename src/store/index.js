@@ -13,7 +13,8 @@ export default new Vuex.Store({
     gradebooks: [],
     loadedGradebooks: [],
     loader: 10,
-    disableLoadButton: false
+    disableLoadButton: false,
+    professors: []
 
   },
   getters,

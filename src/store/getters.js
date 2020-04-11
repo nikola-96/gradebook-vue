@@ -5,5 +5,7 @@ export default {
 
     getLoadedGradebooks: state => state.loadedGradebooks,
     getLoader: state => state.loader,
-    getLoadButtonStatus: state => state.disableLoadButton
+    getLoadButtonStatus: state => state.disableLoadButton,
+
+    getAllProfessorsFromState: state => state.professors,
 }

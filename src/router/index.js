@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/auth/Login.vue'
 import Register from '../views/auth/Register.vue'
 import Gradebook from '../views/gradebooks/Gradebook.vue'
+import Professors from '../views/professors/Professors.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,11 @@ const routes = [
     path: '/gradebooks',
     name: 'Gradebooks',
     component: Gradebook
+  },
+  {
+    path: '/professors',
+    name: 'Professors',
+    component: Professors
   }
 ]
 

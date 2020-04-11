@@ -23,5 +23,9 @@ export default {
     },
     setLoadButtonStatus(state) {
         state.disableLoadButton = true;
+    },
+    setAllProfessors(state, response) {
+
+        state.professors = response;
     }
 }
