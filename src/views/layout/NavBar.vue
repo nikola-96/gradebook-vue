@@ -16,12 +16,11 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
+          <b-nav-item-dropdown right v-if="getUserStatus">
             <template v-slot:button-content>
               <em>User</em>
             </template>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item @click="handleLogout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -30,7 +29,23 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+import authService from "@/services/AuthService.js";
+
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  methods: {
+    ...mapActions(["changeUserStatus"]),
+    handleLogout() {
+      authService.logout();
+      this.changeUserStatus(false);
+    }
+  },
+  computed: {
+    ...mapGetters(["getUserStatus"])
+  },
+  created() {
+    this.changeUserStatus(authService.isAuthenticated());
+  }
 };
 </script>
