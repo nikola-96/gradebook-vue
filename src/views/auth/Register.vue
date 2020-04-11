@@ -21,6 +21,7 @@ export default {
   methods: {
     ...mapActions(["changeUserStatus"]),
     async handleRegister(user) {
+      //problem???
       try {
         await authService.register(user);
         this.changeUserStatus(true);
