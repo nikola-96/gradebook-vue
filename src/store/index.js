@@ -10,7 +10,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isUserLogin: false,
-    gradebooks: []
+    gradebooks: [],
+    loadedGradebooks: [],
+    loader: 10,
+    disableLoadButton: false
+
   },
   getters,
   mutations,

@@ -9,6 +9,16 @@ export default {
         const reponse = await gradebookService.getAll();
 
         commit('setAllGradebooks', reponse);
+    },
+    //
+    getIntitalLoadedGradebooks({ commit }) {
+        commit("setInitialLoadedGradebooks")
+    },
+    handleLoadingGradebooks({ commit }, value) {
+        commit('setLoadedGradebooks', value)
+    },
+    handleLoadButtonStatus({ commit }) {
+        commit('setLoadButtonStatus')
     }
 
 }

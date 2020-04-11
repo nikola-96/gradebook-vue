@@ -3,7 +3,7 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
-          <gradebook-list :gradebooks="getAllGradebooksFromState" />
+          <gradebook-list :gradebooks="getLoadedGradebooks" :loadGradebooks="handleLoader" />
         </b-col>
       </b-row>
     </b-container>
@@ -19,13 +19,49 @@ export default {
     GradebookList
   },
   methods: {
-    ...mapActions(["getAllGradebooks"])
+    ...mapActions([
+      "getAllGradebooks",
+      "handleLoadingGradebooks",
+      "getIntitalLoadedGradebooks",
+      "handleLoadButtonStatus"
+    ]),
+
+    handleLoader() {
+      if (this.counter() == 0) {
+        return;
+      }
+      if (this.getLoader < this.counter()) {
+        this.handleLoadingGradebooks({
+          start: this.getLoadedGradebooks.length,
+          end: this.getLoader + this.getLoadedGradebooks.length
+        });
+        return;
+      }
+      if (this.getLoader > this.counter()) {
+        this.handleLoadingGradebooks({
+          start: this.getLoadedGradebooks.length,
+          end: this.getLoadedGradebooks.length + this.counter()
+        });
+        this.handleLoadButtonStatus();
+      }
+    },
+
+    counter() {
+      return (
+        this.getAllGradebooksFromState.length - this.getLoadedGradebooks.length
+      );
+    }
   },
   computed: {
-    ...mapGetters(["getAllGradebooksFromState"])
+    ...mapGetters([
+      "getAllGradebooksFromState",
+      "getLoadedGradebooks",
+      "getLoader"
+    ])
   },
   async created() {
     await this.getAllGradebooks();
+    this.getIntitalLoadedGradebooks();
   }
 };
 </script>

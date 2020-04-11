@@ -13,15 +13,25 @@
       </p>
       <p v-else>Gradebook doesn't have professor</p>
     </div>
+    <button v-if="!getLoadButtonStatus" @click="loadGradebooks">Load More</button>
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "GradebookList",
   props: {
     gradebooks: {
       type: Array
+    },
+    loadGradebooks: {
+      type: Function,
+      required: true
     }
+  },
+  computed: {
+    ...mapGetters(["getLoadButtonStatus"])
   }
 };
 </script> 

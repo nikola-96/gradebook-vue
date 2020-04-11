@@ -5,5 +5,20 @@ export default {
     //gradebook mutations
     setAllGradebooks(state, response) {
         state.gradebooks = response;
+    },
+    setInitialLoadedGradebooks(state) {
+        state.loadedGradebooks = state.gradebooks.slice(0, 10)
+
+    },
+    setLoadedGradebooks(state, value) {
+        const loaded = state.gradebooks.slice(value.start, value.end)
+
+        loaded.forEach(element => {
+
+            state.loadedGradebooks.push(element)
+        });
+    },
+    setLoadButtonStatus(state) {
+        state.disableLoadButton = true;
     }
 }
