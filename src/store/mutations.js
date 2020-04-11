@@ -3,8 +3,11 @@ export default {
         state.isUserLogin = status;
     },
     //gradebook mutations
-    setAllGradebooks(state, response) {
+    setAllGradebooks(state, response) { //dobavljanje svih dnevnika
         state.gradebooks = response;
+    },
+    setFiltredGradebooks(state, response) { //dobavljanje filtritanih dnevnika
+        state.gradebooks = response
     },
     setInitialLoadedGradebooks(state) {
         state.loadedGradebooks = state.gradebooks.slice(0, 10)

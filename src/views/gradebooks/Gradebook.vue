@@ -3,6 +3,7 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
+          <search-gradebook />
           <gradebook-list :gradebooks="getLoadedGradebooks" :loadGradebooks="handleLoader" />
         </b-col>
       </b-row>
@@ -11,12 +12,14 @@
 </template>
 <script>
 import GradebookList from "@/components/gradebooks/GradebookList.vue";
+import SearchGradebook from "@/components/gradebooks/SearchGradebook.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Gradebook",
   components: {
-    GradebookList
+    GradebookList,
+    SearchGradebook
   },
   methods: {
     ...mapActions([
@@ -45,7 +48,6 @@ export default {
         this.handleLoadButtonStatus();
       }
     },
-
     counter() {
       return (
         this.getAllGradebooksFromState.length - this.getLoadedGradebooks.length

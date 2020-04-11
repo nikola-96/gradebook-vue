@@ -10,6 +10,11 @@ export default {
 
         commit('setAllGradebooks', reponse);
     },
+    async getFiltredGradebooks({ commit }, term) {
+        const response = await gradebookService.getFiltredGradebooks(term);
+
+        commit('setFiltredGradebooks', response);
+    },
     //
     getIntitalLoadedGradebooks({ commit }) {
         commit("setInitialLoadedGradebooks")
