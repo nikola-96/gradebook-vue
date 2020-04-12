@@ -21,14 +21,29 @@ export default {
             state.loadedGradebooks.push(element)
         });
     },
-    setLoadButtonStatus(state) {
-        state.disableLoadButton = true;
+    setLoadButtonStatus(state, value) {
+        state.disableLoadButton = value;
     },
+
     setAllProfessors(state, response) {
 
         state.professors = response;
     },
     setSingleProfessor(state, response) {
         state.singleProfessor = response
+    },
+    setFiltredProfesors(state, response) {
+        state.professors = response;
+    },
+    setInitialLoadedProfessors(state) {
+        state.loadedProfessors = state.professors.slice(0, 10)
+    },
+    setLoadedProfessors(state, value) {
+        const loaded = state.professors.slice(value.start, value.end)
+
+        loaded.forEach(element => {
+
+            state.loadedProfessors.push(element)
+        });
     }
 }

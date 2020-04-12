@@ -22,8 +22,8 @@ export default {
     handleLoadingGradebooks({ commit }, value) {
         commit('setLoadedGradebooks', value)
     },
-    handleLoadButtonStatus({ commit }) {
-        commit('setLoadButtonStatus')
+    handleLoadButtonStatus({ commit }, value) {
+        commit('setLoadButtonStatus', value)
     },
     //Professor actions
     async getAllProfessors({ commit }) {
@@ -33,8 +33,18 @@ export default {
     async getSingleProessor({ commit }, id) {
         const response = await professorService.getSingleProf(id)
         commit('setSingleProfessor', response)
-
+    },
+    async getFiltredProfessors({ commit }, term) {
+        const response = await professorService.getFiltredProf(term);
+        commit('setFiltredProfesors', response)
+    },
+    getIntitalLoadedProfessors({ commit }) {
+        commit("setInitialLoadedProfessors")
+    },
+    handleLoadingProfessors({ commit }, value) {
+        commit('setLoadedProfessors', value)
     }
+
 
 
 }

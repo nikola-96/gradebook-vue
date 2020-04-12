@@ -3,6 +3,8 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
+          <h1>The Gradebooks List</h1>
+          <hr />
           <search-gradebook />
           <gradebook-list :gradebooks="getLoadedGradebooks" :loadGradebooks="handleLoader" />
         </b-col>
@@ -31,6 +33,8 @@ export default {
 
     handleLoader() {
       if (this.counter() == 0) {
+        this.handleLoadButtonStatus(true);
+
         return;
       }
       if (this.getLoader < this.counter()) {
@@ -45,7 +49,7 @@ export default {
           start: this.getLoadedGradebooks.length,
           end: this.getLoadedGradebooks.length + this.counter()
         });
-        this.handleLoadButtonStatus();
+        this.handleLoadButtonStatus(true);
       }
     },
     counter() {
@@ -64,6 +68,7 @@ export default {
   async created() {
     await this.getAllGradebooks();
     this.getIntitalLoadedGradebooks();
+    this.handleLoadButtonStatus(false);
   }
 };
 </script>

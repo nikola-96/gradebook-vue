@@ -9,4 +9,5 @@ export default {
 
     getAllProfessorsFromState: state => state.professors,
     getSingleProfessorFromState: state => state.singleProfessor,
+    getLoadedProfessors: state => state.loadedProfessors
 }
