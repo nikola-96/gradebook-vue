@@ -4,6 +4,7 @@ import Login from '../views/auth/Login.vue'
 import Register from '../views/auth/Register.vue'
 import Gradebook from '../views/gradebooks/Gradebook.vue'
 import Professors from '../views/professors/Professors.vue'
+import SingleProfessor from '../views/professors/SingleProfessor.vue'
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,11 @@ const routes = [
     path: '/professors',
     name: 'Professors',
     component: Professors
+  },
+  {
+    path: '/professor/:id',
+    name: 'SingleProfessor',
+    component: SingleProfessor
   }
 ]
 

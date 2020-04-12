@@ -27,9 +27,13 @@ export default {
     },
     //Professor actions
     async getAllProfessors({ commit }) {
-
         const reponse = await professorService.getAll()
         commit('setAllProfessors', reponse)
+    },
+    async getSingleProessor({ commit }, id) {
+        const response = await professorService.getSingleProf(id)
+        commit('setSingleProfessor', response)
+
     }
 
 

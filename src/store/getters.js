@@ -8,4 +8,5 @@ export default {
     getLoadButtonStatus: state => state.disableLoadButton,
 
     getAllProfessorsFromState: state => state.professors,
+    getSingleProfessorFromState: state => state.singleProfessor,
 }

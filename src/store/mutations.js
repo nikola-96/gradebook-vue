@@ -27,5 +27,8 @@ export default {
     setAllProfessors(state, response) {
 
         state.professors = response;
+    },
+    setSingleProfessor(state, response) {
+        state.singleProfessor = response
     }
 }
