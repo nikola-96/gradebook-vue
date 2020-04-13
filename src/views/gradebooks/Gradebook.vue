@@ -32,16 +32,23 @@ export default {
     ]),
 
     handleLoader() {
+      console.log("uso sam u upit");
+      console.log(this.counter());
+
       if (this.counter() == 0) {
         this.handleLoadButtonStatus(true);
 
         return;
       }
-      if (this.getLoader < this.counter()) {
+      if (this.getLoader <= this.counter()) {
         this.handleLoadingGradebooks({
           start: this.getLoadedGradebooks.length,
           end: this.getLoader + this.getLoadedGradebooks.length
         });
+        if (this.counter() == 0) {
+          this.handleLoadButtonStatus(true);
+        }
+
         return;
       }
       if (this.getLoader > this.counter()) {
@@ -49,6 +56,7 @@ export default {
           start: this.getLoadedGradebooks.length,
           end: this.getLoadedGradebooks.length + this.counter()
         });
+
         this.handleLoadButtonStatus(true);
       }
     },

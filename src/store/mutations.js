@@ -45,5 +45,9 @@ export default {
 
             state.loadedProfessors.push(element)
         });
+    },
+    setAvalibleProfessors(state, response) {
+        state.avalibleProfessors = response;
     }
+
 }

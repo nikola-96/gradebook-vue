@@ -5,6 +5,7 @@ import Register from '../views/auth/Register.vue'
 import Gradebook from '../views/gradebooks/Gradebook.vue'
 import Professors from '../views/professors/Professors.vue'
 import SingleProfessor from '../views/professors/SingleProfessor.vue'
+import GradebookCreate from '../views/gradebooks/GradebookCreate.vue'
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,11 @@ const routes = [
     path: '/professor/:id',
     name: 'SingleProfessor',
     component: SingleProfessor
+  },
+  {
+    path: '/gradebook/create',
+    name: 'GradebookCreate',
+    component: GradebookCreate
   }
 ]
 

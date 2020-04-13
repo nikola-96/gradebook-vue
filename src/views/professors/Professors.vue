@@ -37,11 +37,14 @@ export default {
 
         return;
       }
-      if (this.getLoader < this.counter()) {
+      if (this.getLoader <= this.counter()) {
         this.handleLoadingProfessors({
           start: this.getLoadedProfessors.length,
           end: this.getLoader + this.getLoadedProfessors.length
         });
+        if (this.counter() == 0) {
+          this.handleLoadButtonStatus(true);
+        }
         return;
       }
       if (this.getLoader > this.counter()) {

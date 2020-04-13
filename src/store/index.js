@@ -16,7 +16,8 @@ export default new Vuex.Store({
     disableLoadButton: false,
     professors: [],
     singleProfessor: {},
-    loadedProfessors: []
+    loadedProfessors: [],
+    avalibleProfessors: []
 
   },
   getters,

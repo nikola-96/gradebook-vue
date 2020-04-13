@@ -15,6 +15,10 @@ export default {
         const response = await gradebookService.getFiltredGradebooks(term);
         commit('setFiltredGradebooks', response);
     },
+    // async postGradebook({ commit }, gradebook){
+    //     const response = await gradebookService.postGradebook(gradebookService)
+
+    // },
     //
     getIntitalLoadedGradebooks({ commit }) {
         commit("setInitialLoadedGradebooks")
@@ -43,6 +47,10 @@ export default {
     },
     handleLoadingProfessors({ commit }, value) {
         commit('setLoadedProfessors', value)
+    },
+    async getAvalibleProfessors({ commit }, ) {
+        const response = await gradebookService.getAvalibleProf();
+        commit('setAvalibleProfessors', response)
     }
 
 

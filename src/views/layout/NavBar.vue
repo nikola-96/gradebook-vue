@@ -9,9 +9,9 @@
           <b-nav-item to="/register">Register</b-nav-item>
           <b-nav-item to="/gradebooks">Gradebooks</b-nav-item>
           <b-nav-item to="/professors">All Profesors</b-nav-item>
-          <!-- <b-nav-item to="/my-gradebook">My Gradebook</b-nav-item>
+          <!-- <b-nav-item to="/my-gradebook">My Gradebook</b-nav-item> -->
           <b-nav-item to="/gradebook/create">Add Gradebook</b-nav-item>
-          <b-nav-item to="/professors/create">Add Professor</b-nav-item>-->
+          <!-- <b-nav-item to="/professors/create">Add Professor</b-nav-item> -->
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

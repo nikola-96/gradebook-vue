@@ -12,6 +12,16 @@ class GradebookService {
 
         return response.data
     }
+    async getAvalibleProf() {
+        const response = await HTTP.get('/gradebooks/create');
+
+        return response.data
+    }
+    async postGradebook(gradebook) {
+        const response = await HTTP.post('/gradebooks/store', gradebook)
+
+        return response.data
+    }
 }
 const gradebookService = new GradebookService();
 export default gradebookService;
