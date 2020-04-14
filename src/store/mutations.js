@@ -21,6 +21,10 @@ export default {
             state.loadedGradebooks.push(element)
         });
     },
+    setMyGradebook(state, response) {
+
+        state.myGradebook = response;
+    },
     setLoadButtonStatus(state, value) {
         state.disableLoadButton = value;
     },

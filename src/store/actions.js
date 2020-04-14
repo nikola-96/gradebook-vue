@@ -15,6 +15,12 @@ export default {
         const response = await gradebookService.getFiltredGradebooks(term);
         commit('setFiltredGradebooks', response);
     },
+    async getMyGradebook({ commit }) {
+        const response = await gradebookService.getMyGradebook();
+        console.log(response, 'akcija');
+
+        commit('setMyGradebook', response)
+    },
     // async postGradebook({ commit }, gradebook){
     //     const response = await gradebookService.postGradebook(gradebookService)
 
@@ -34,8 +40,9 @@ export default {
         const reponse = await professorService.getAll()
         commit('setAllProfessors', reponse)
     },
-    async getSingleProessor({ commit }, id) {
+    async getSingleProfessor({ commit }, id) {
         const response = await professorService.getSingleProf(id)
+
         commit('setSingleProfessor', response)
     },
     async getFiltredProfessors({ commit }, term) {

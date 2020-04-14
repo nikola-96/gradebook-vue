@@ -32,9 +32,6 @@ export default {
     ]),
 
     handleLoader() {
-      console.log("uso sam u upit");
-      console.log(this.counter());
-
       if (this.counter() == 0) {
         this.handleLoadButtonStatus(true);
 
