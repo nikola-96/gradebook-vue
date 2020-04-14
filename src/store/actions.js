@@ -58,6 +58,11 @@ export default {
     async getAvalibleProfessors({ commit }, ) {
         const response = await gradebookService.getAvalibleProf();
         commit('setAvalibleProfessors', response)
+    },
+
+    async getAvalibleGradebooks({ commit }) {
+        const response = await professorService.getAvalibleGradebooks();
+        commit('setAvalibleGradebooks', response)
     }
 
 

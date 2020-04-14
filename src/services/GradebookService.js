@@ -24,8 +24,6 @@ class GradebookService {
     }
     async getMyGradebook() {
         const response = await HTTP.get('/my-gradebook');
-        console.log(response.data, 'servis');
-
 
         return response.data
     }

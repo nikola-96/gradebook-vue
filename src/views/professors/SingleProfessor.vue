@@ -49,7 +49,7 @@ export default {
     ...mapActions(["getSingleProfessor"])
   },
   computed: {
-    ...mapGetters([["getSingleProfessorFromState"]])
+    ...mapGetters(["getSingleProfessorFromState"])
   },
   data() {
     return {

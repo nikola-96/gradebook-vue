@@ -7,6 +7,7 @@ import Professors from '../views/professors/Professors.vue'
 import SingleProfessor from '../views/professors/SingleProfessor.vue'
 import GradebookCreate from '../views/gradebooks/GradebookCreate.vue'
 import MyGradebook from '../views/gradebooks/MyGradebook.vue'
+import ProfessorCreate from '../views/professors/ProfessorCreate.vue'
 
 
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/my-gradebook',
     name: 'MyGradebook',
     component: MyGradebook
+  },
+  {
+    path: '/professors/create',
+    name: 'ProfessorCreate',
+    component: ProfessorCreate
   }
 ]
 

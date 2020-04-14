@@ -16,6 +16,11 @@ class ProfessorService {
 
         return response.data
     }
+    async getAvalibleGradebooks() {
+        const response = await HTTP.get('professors/create');
+
+        return response.data;
+    }
 }
 const professorService = new ProfessorService();
 

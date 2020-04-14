@@ -52,6 +52,9 @@ export default {
     },
     setAvalibleProfessors(state, response) {
         state.avalibleProfessors = response;
+    },
+    setAvalibleGradebooks(state, response) {
+        state.avalibleGradebooks = response;
     }
 
 }

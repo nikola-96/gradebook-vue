@@ -18,7 +18,8 @@ export default new Vuex.Store({
     singleProfessor: {},
     loadedProfessors: [],
     avalibleProfessors: [],
-    myGradebook: {}
+    myGradebook: {},
+    avalibleGradebooks: []
 
   },
   getters,
