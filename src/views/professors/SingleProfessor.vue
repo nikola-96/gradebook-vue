@@ -60,7 +60,6 @@ export default {
   async created() {
     const id = this.$route.params.id;
     await this.getSingleProfessor(id);
-    console.log(this.getSingleProfessorFromState);
 
     this.students = this.getSingleProfessorFromState.students.length;
   }
