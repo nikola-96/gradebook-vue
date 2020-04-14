@@ -17,9 +17,11 @@ export default {
     },
     async getMyGradebook({ commit }) {
         const response = await gradebookService.getMyGradebook();
-        console.log(response, 'akcija');
-
         commit('setMyGradebook', response)
+    },
+    async getSingleGradebook({ commit }, id) {
+        const response = await gradebookService.getSingleGradebook(id)
+        commit("setSingleGradebook", response)
     },
     // async postGradebook({ commit }, gradebook){
     //     const response = await gradebookService.postGradebook(gradebookService)

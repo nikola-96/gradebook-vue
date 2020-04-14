@@ -74,7 +74,7 @@ export default {
 }
 .input-filed {
   width: 400px;
-  margin-left: 31%;
+  margin-left: 29%;
 }
 .heading {
   margin-bottom: 30px;

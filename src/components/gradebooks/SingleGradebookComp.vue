@@ -1,3 +1,54 @@
 <template>
-  <div>pp</div>
+  <div>
+    <div class="btn-student" v-if="gradebook.isAuth">
+      <b-button :to="`/gradebooks/${gradebook.id}/students/create`">Add student</b-button>
+    </div>
+    <div class="container-card">
+      <b-card no-body :img-src="`${gradebook.url}`" img-alt="Professor dosen't have image." img-top>
+        <template v-slot:header>
+          <h4
+            v-if="gradebook.professor"
+            class="mb-0"
+          >Profesor: {{ gradebook.professor.first_name }} {{ gradebook.professor.last_name }}</h4>
+        </template>
+
+        <b-card-body>
+          <b-card-title>Gradebook: {{ gradebook.name }}</b-card-title>
+        </b-card-body>
+        <hr />
+        <b-list-group flush v-if="gradebook.students">
+          <p>
+            <strong>Students:</strong>
+          </p>
+          <b-list-group-item
+            v-for="student in gradebook.students"
+            :key="student.id"
+          >{{student.first_name}} {{student.last_name}}</b-list-group-item>
+        </b-list-group>
+      </b-card>
+    </div>
+  </div>
 </template>
+<script>
+export default {
+  name: "SingleGradebookComp",
+  props: {
+    gradebook: {
+      type: Object
+    }
+  },
+  created() {
+    console.log(this.gradebook);
+  }
+};
+</script>
+<style>
+.container-card {
+  margin-top: 70px;
+  margin-bottom: 50px;
+  height: 50px;
+}
+.btn-student {
+  margin-top: 45px;
+}
+</style>

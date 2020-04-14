@@ -55,6 +55,9 @@ export default {
     },
     setAvalibleGradebooks(state, response) {
         state.avalibleGradebooks = response;
+    },
+    setSingleGradebook(state, response) {
+        state.singleGradebook = response
     }
 
 }

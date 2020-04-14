@@ -27,6 +27,11 @@ class GradebookService {
 
         return response.data
     }
+    async getSingleGradebook(id) {
+        const response = await HTTP.get(`/gradebook/${id}`);
+
+        return response.data
+    }
 }
 const gradebookService = new GradebookService();
 export default gradebookService;

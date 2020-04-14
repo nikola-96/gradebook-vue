@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="btn-student">
-      <b-button :to="`/gradebooks/${professor.gradebook.id}/students/create`">Button</b-button>
+      <b-button :to="`/gradebooks/${professor.gradebook.id}/students/create`">Add student</b-button>
     </div>
     <div class="container-card">
       <b-card no-body :img-src="`${professor.url}`" img-alt="Professor dosen't have image." img-top>
@@ -11,8 +11,6 @@
 
         <b-card-body>
           <b-card-title>Gradebook: {{ professor.gradebook.name }}</b-card-title>
-          <b-card-sub-title class="mb-2"></b-card-sub-title>
-          <b-card-text></b-card-text>
         </b-card-body>
         <hr />
         <b-list-group flush v-if="professor.students">
