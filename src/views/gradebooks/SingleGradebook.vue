@@ -6,6 +6,7 @@
           <single-gradebook-comp
             v-if="getSingleGradebookFromState"
             :gradebook="getSingleGradebookFromState"
+            :deleteGradebook="deleteGradebook"
           />
           <gradebook-comments
             :comments="getCommentsFromState"
@@ -23,6 +24,7 @@ import { mapActions, mapGetters } from "vuex";
 import GradebookComments from "@/components/gradebooks/GradebookComments.vue";
 import GradebookCommentForm from "@/components/gradebooks/GradebookCommentForm";
 import commentService from "@/services/CommentService";
+import gradebookService from "@/services/GradebookService";
 
 export default {
   name: "SingleGradebook",
@@ -46,6 +48,12 @@ export default {
       if (confirm("Are you sure?")) {
         await commentService.delete(id);
         await this.getComments(this.id);
+      }
+    },
+    async deleteGradebook(id) {
+      if (confirm("Are you sure?")) {
+        await gradebookService.delete(id);
+        this.$router.push("/gradebooks");
       }
     }
   },

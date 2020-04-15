@@ -3,6 +3,9 @@
     <div class="btn-student" v-if="gradebook.isAuth">
       <b-button :to="`/gradebooks/${gradebook.id}/students/create`">Add student</b-button>
     </div>
+    <div v-if="gradebook.isAuth">
+      <b-button @click="handleDeleteGradebook" variant="danger">Delete Gradebook</b-button>
+    </div>
     <div class="container-card">
       <b-card no-body :img-src="`${gradebook.url}`" img-alt="Professor dosen't have image." img-top>
         <template v-slot:header>
@@ -35,10 +38,16 @@ export default {
   props: {
     gradebook: {
       type: Object
+    },
+    deleteGradebook: {
+      type: Function,
+      required: true
     }
   },
-  created() {
-    console.log(this.gradebook);
+  methods: {
+    handleDeleteGradebook() {
+      this.deleteGradebook(this.gradebook.id);
+    }
   }
 };
 </script>

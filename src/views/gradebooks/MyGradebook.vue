@@ -8,10 +8,11 @@
               <my-gradebook-card
                 v-if="getMyGradebookFromState.gradebook"
                 :professor="getMyGradebookFromState"
+                :deleteGradebook="deleteGradebook"
               />
-              <h1 v-else>You don't have your gradebook</h1>
+              <h1 v-else class="heading-else">You don't have your gradebook yet.</h1>
             </div>
-            <div class="comments">
+            <div class="comments" v-if="getMyGradebookFromState.gradebook">
               <p>
                 <strong>Comments:</strong>
               </p>
@@ -33,6 +34,7 @@ import MyGradebookCard from "@/components/gradebooks/MyGradebookCard.vue";
 import GradebookComments from "@/components/gradebooks/GradebookComments.vue";
 import GradebookCommentForm from "@/components/gradebooks/GradebookCommentForm";
 import commentService from "@/services/CommentService";
+import gradebookService from "@/services/GradebookService";
 
 export default {
   name: "MyGradebook",
@@ -57,6 +59,12 @@ export default {
         await commentService.delete(id);
         await this.getComments(this.getMyGradebookFromState.gradebook.id);
       }
+    },
+    async deleteGradebook(id) {
+      if (confirm("Are you sure?")) {
+        await gradebookService.delete(id);
+        this.$router.push("/gradebooks");
+      }
     }
   },
   computed: {
@@ -64,7 +72,9 @@ export default {
   },
   async created() {
     await this.getMyGradebook();
-    await this.getComments(this.getMyGradebookFromState.gradebook.id);
+    if (this.getMyGradebookFromState.gradebook) {
+      await this.getComments(this.getMyGradebookFromState.gradebook.id);
+    }
   },
   data() {
     return {
@@ -80,5 +90,8 @@ export default {
 }
 .comments {
   margin-bottom: 25px;
+}
+.heading-else {
+  margin-top: 150px;
 }
 </style>

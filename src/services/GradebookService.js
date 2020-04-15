@@ -32,6 +32,10 @@ class GradebookService {
 
         return response.data
     }
+    async delete(id) {
+        console.log(id)
+        await HTTP.delete(`/gradebooks/${id}`)
+    }
 }
 const gradebookService = new GradebookService();
 export default gradebookService;

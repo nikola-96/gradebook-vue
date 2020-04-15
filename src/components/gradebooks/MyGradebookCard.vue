@@ -3,6 +3,9 @@
     <div class="btn-student">
       <b-button :to="`/gradebooks/${professor.gradebook.id}/students/create`">Add student</b-button>
     </div>
+    <div>
+      <b-button @click="handleDeleteGradebook" variant="danger">Delete Gradebook</b-button>
+    </div>
     <div class="container-card">
       <b-card
         no-body
@@ -38,6 +41,15 @@ export default {
     professor: {
       type: Object,
       require: true
+    },
+    deleteGradebook: {
+      type: Function,
+      required: true
+    }
+  },
+  methods: {
+    handleDeleteGradebook() {
+      this.deleteGradebook(this.professor.gradebook.id);
     }
   },
   data() {
