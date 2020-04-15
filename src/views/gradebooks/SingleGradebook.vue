@@ -7,7 +7,11 @@
             v-if="getSingleGradebookFromState"
             :gradebook="getSingleGradebookFromState"
           />
-          <gradebook-comments />
+          <gradebook-comments
+            :comments="getCommentsFromState"
+            :handleDeleteComment="handleDeleteComment"
+          />
+          <gradebook-comment-form class="comment-form" :postComment="postComment" />
         </b-col>
       </b-row>
     </b-container>
@@ -17,22 +21,46 @@
 import SingleGradebookComp from "@/components/gradebooks/SingleGradebookComp";
 import { mapActions, mapGetters } from "vuex";
 import GradebookComments from "@/components/gradebooks/GradebookComments.vue";
+import GradebookCommentForm from "@/components/gradebooks/GradebookCommentForm";
+import commentService from "@/services/CommentService";
 
 export default {
   name: "SingleGradebook",
   components: {
     SingleGradebookComp,
-    GradebookComments
+    GradebookComments,
+    GradebookCommentForm
   },
   methods: {
-    ...mapActions(["getSingleGradebook"])
+    ...mapActions(["getSingleGradebook", "getComments"]),
+    async postComment(comment) {
+      comment.gradebook_id = this.id;
+      try {
+        await commentService.postComment(comment);
+      } catch (error) {
+        console.log(error);
+      }
+      await this.getComments(this.id);
+    },
+    async handleDeleteComment(id) {
+      if (confirm("Are you sure?")) {
+        await commentService.delete(id);
+        await this.getComments(this.id);
+      }
+    }
   },
   computed: {
-    ...mapGetters(["getSingleGradebookFromState"])
+    ...mapGetters(["getSingleGradebookFromState", "getCommentsFromState"])
   },
   async created() {
-    const id = this.$route.params.id;
-    await this.getSingleGradebook(id);
+    this.id = this.$route.params.id;
+    await this.getSingleGradebook(this.id);
+    await this.getComments(this.id);
+  },
+  data() {
+    return {
+      id: 0
+    };
   }
 };
 </script>

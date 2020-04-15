@@ -69,7 +69,6 @@ export default {
     },
     //
     async getComments({ commit }, id) {
-        console.log('akcija', id)
 
         const response = await commentService.getAll(id);
         commit('setComments', response)

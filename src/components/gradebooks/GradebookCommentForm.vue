@@ -19,10 +19,6 @@
 export default {
   name: "GradebookCommentForm",
   props: {
-    // comment: {
-    //   type: Object,
-    //   required: true
-    // },
     postComment: {
       type: Function,
       required: true
