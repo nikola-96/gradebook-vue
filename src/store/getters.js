@@ -12,5 +12,6 @@ export default {
     getLoadedProfessors: state => state.loadedProfessors,
     getAvalibleProfessorsFromState: state => state.avalibleProfessors,
     getAvalibleGradebooksFromState: state => state.avalibleGradebooks,
-    getSingleGradebookFromState: state => state.singleGradebook
+    getSingleGradebookFromState: state => state.singleGradebook,
+    getCommentsFromState: state => state.comments,
 }

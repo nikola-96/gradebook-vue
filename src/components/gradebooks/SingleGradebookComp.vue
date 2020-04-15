@@ -46,7 +46,6 @@ export default {
 .container-card {
   margin-top: 70px;
   margin-bottom: 50px;
-  height: 50px;
 }
 .btn-student {
   margin-top: 45px;

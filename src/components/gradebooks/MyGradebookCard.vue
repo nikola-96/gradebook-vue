@@ -1,10 +1,16 @@
 <template>
-  <div>
+  <div class="proba">
     <div class="btn-student">
       <b-button :to="`/gradebooks/${professor.gradebook.id}/students/create`">Add student</b-button>
     </div>
     <div class="container-card">
-      <b-card no-body :img-src="`${professor.url}`" img-alt="Professor dosen't have image." img-top>
+      <b-card
+        no-body
+        :img-src="`${professor.url}`"
+        img-alt="Professor dosen't have image."
+        img-top
+        style="max-heigth: 100%;"
+      >
         <template v-slot:header>
           <h4 class="mb-0">Profesor: {{ professor.first_name }} {{ professor.last_name }}</h4>
         </template>
@@ -46,7 +52,6 @@ export default {
 .container-card {
   margin-top: 70px;
   margin-bottom: 50px;
-  height: 50px;
 }
 .btn-student {
   margin-top: 45px;

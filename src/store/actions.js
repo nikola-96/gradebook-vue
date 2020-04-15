@@ -1,5 +1,6 @@
 import gradebookService from '@/services/GradebookService'
 import professorService from '@/services/ProfessorService'
+import commentService from '@/services/CommentService'
 
 
 export default {
@@ -16,7 +17,7 @@ export default {
         commit('setFiltredGradebooks', response);
     },
     async getMyGradebook({ commit }) {
-        const response = await gradebookService.getMyGradebook();
+        const response = await gradebookService.getMyGradebookService();
         commit('setMyGradebook', response)
     },
     async getSingleGradebook({ commit }, id) {
@@ -65,8 +66,14 @@ export default {
     async getAvalibleGradebooks({ commit }) {
         const response = await professorService.getAvalibleGradebooks();
         commit('setAvalibleGradebooks', response)
-    }
+    },
+    //
+    async getComments({ commit }, id) {
+        console.log('akcija', id)
 
-
-
+        const response = await commentService.getAll(id);
+        commit('setComments', response)
+    },
 }
+
+

@@ -58,6 +58,10 @@ export default {
     },
     setSingleGradebook(state, response) {
         state.singleGradebook = response
+    },
+    setComments(state, response) {
+        console.log(response)
+        state.comments = response
     }
 
 }
