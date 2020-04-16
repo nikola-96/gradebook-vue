@@ -24,9 +24,12 @@ export default {
   methods: {
     ...mapActions(["getAvalibleProfessors"]),
     async handlePostGradebook(gradebook) {
-      const response = await gradebookService.postGradebook(gradebook);
-      console.log(response);
-      this.$router.push("/gradebooks");
+      try {
+        const response = await gradebookService.postGradebook(gradebook);
+        this.$router.push("/gradebooks");
+      } catch (error) {
+        console.log(error.response);
+      }
     }
   },
   computed: {

@@ -1,10 +1,12 @@
 <template>
   <div class="proba">
     <div class="btn-student">
-      <b-button :to="`/gradebooks/${professor.gradebook.id}/students/create`">Add student</b-button>
-    </div>
-    <div>
+      <b-button
+        class="student"
+        :to="`/gradebooks/${professor.gradebook.id}/students/create`"
+      >Add student</b-button>
       <b-button @click="handleDeleteGradebook" variant="danger">Delete Gradebook</b-button>
+      <b-button class="edit" to="/gradebooks/edit">Edit gradebook</b-button>
     </div>
     <div class="container-card">
       <b-card
@@ -67,5 +69,11 @@ export default {
 }
 .btn-student {
   margin-top: 45px;
+}
+.student {
+  margin-right: 150px;
+}
+.edit {
+  margin-left: 150px;
 }
 </style>

@@ -21,7 +21,8 @@ export default new Vuex.Store({
     myGradebook: {},
     avalibleGradebooks: [],
     singleGradebook: {},
-    comments: []
+    comments: [],
+    singleStudent: {},
 
   },
   getters,

@@ -74,6 +74,7 @@ export default {
     await this.getAllGradebooks();
     this.getIntitalLoadedGradebooks();
     this.handleLoadButtonStatus(false);
+    this.handleLoader();
   }
 };
 </script>

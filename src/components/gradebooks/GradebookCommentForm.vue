@@ -9,7 +9,7 @@
         size="lg"
         placeholder="Enter your comment"
         class="comment-form"
-        v-model="comment.body"
+        v-model="body"
       ></b-form-textarea>
       <b-button class="btn-comment" @click="handlePostComment">Add Comment</b-button>
     </b-col>
@@ -26,11 +26,14 @@ export default {
   },
   methods: {
     handlePostComment() {
+      this.comment.body = this.body;
       this.postComment(this.comment);
+      this.body = "";
     }
   },
   data() {
     return {
+      body: "",
       comment: {}
     };
   }

@@ -1,7 +1,7 @@
 import gradebookService from '@/services/GradebookService'
 import professorService from '@/services/ProfessorService'
 import commentService from '@/services/CommentService'
-
+import studentService from '@/services/StudentService'
 
 export default {
     changeUserStatus({ commit }, status) {
@@ -18,6 +18,7 @@ export default {
     },
     async getMyGradebook({ commit }) {
         const response = await gradebookService.getMyGradebookService();
+
         commit('setMyGradebook', response)
     },
     async getSingleGradebook({ commit }, id) {
@@ -73,6 +74,10 @@ export default {
         const response = await commentService.getAll(id);
         commit('setComments', response)
     },
+    async getSingleStudent({ commit }, id) {
+        const response = await studentService.getSingleStudent(id)
+        commit("setSingleStudent", response)
+    }
 }
 
 

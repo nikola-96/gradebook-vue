@@ -5,8 +5,8 @@
         <b-row no-gutters>
           <b-col md="6">
             <b-card-img
-              v-if="professor.url"
-              :src="`${professor.url}`"
+              v-if="professor.urls[0]"
+              :src="`${professor.urls[0].imageUrl}`"
               alt="Image"
               class="rounded-0"
             ></b-card-img>
@@ -14,8 +14,14 @@
           <b-col md="6">
             <b-card-body>
               <b-card-text>
-                <h1>{{ professor.first_name }} {{ professor.last_name }}</h1>
-                <p v-if="professor.gradebook">{{ professor.gradebook.name }}</p>
+                <h1>
+                  <router-link
+                    :to="`/professor/${professor.id}`"
+                  >{{ professor.first_name }} {{ professor.last_name }}</router-link>
+                </h1>
+                <p v-if="professor.gradebook">
+                  <router-link :to="`/gradebook/${professor.gradebook.id}`"></router-link>
+                </p>
                 <p v-else>Professor is avalible</p>
               </b-card-text>
             </b-card-body>

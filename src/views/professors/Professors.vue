@@ -73,6 +73,8 @@ export default {
     await this.getAllProfessors();
     this.getIntitalLoadedProfessors();
     this.handleLoadButtonStatus(false);
+    this.handleLoader();
+    console.log(this.getLoadedProfessors);
   }
 };
 </script>

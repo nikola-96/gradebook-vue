@@ -14,4 +14,5 @@ export default {
     getAvalibleGradebooksFromState: state => state.avalibleGradebooks,
     getSingleGradebookFromState: state => state.singleGradebook,
     getCommentsFromState: state => state.comments,
+    getSingleStudentFromState: state => state.singleStudent,
 }

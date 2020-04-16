@@ -60,8 +60,10 @@ export default {
         state.singleGradebook = response
     },
     setComments(state, response) {
-        console.log(response)
         state.comments = response
+    },
+    setSingleStudent(state, response) {
+        state.singleStudent = response
     }
 
 }

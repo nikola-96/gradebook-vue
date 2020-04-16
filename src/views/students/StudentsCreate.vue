@@ -26,6 +26,7 @@ export default {
   methods: {
     async postStudent(student) {
       await studentService.post(student);
+      this.$router.go(-1);
     }
   },
   created() {

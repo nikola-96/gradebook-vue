@@ -8,6 +8,8 @@ class AuthService {
     }
     async register(user) {
         const response = await HTTP.post('/register', user);
+        window.localStorage.setItem('loginToken', response.data.token);
+        this.setAxiosDefaultAuthorizationHeader()
 
         return response.data;
     }

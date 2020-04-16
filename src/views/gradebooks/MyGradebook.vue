@@ -10,7 +10,7 @@
                 :professor="getMyGradebookFromState"
                 :deleteGradebook="deleteGradebook"
               />
-              <h1 v-else class="heading-else">You don't have your gradebook yet.</h1>
+              <h1 v-else class="heading-else">You don't have gradebook yet.</h1>
             </div>
             <div class="comments" v-if="getMyGradebookFromState.gradebook">
               <p>

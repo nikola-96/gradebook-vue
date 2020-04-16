@@ -21,6 +21,11 @@ class ProfessorService {
 
         return response.data;
     }
+    async postProfessor(professor) {
+        const response = await HTTP.post('professors/create', professor)
+
+        return response.data
+    }
 }
 const professorService = new ProfessorService();
 

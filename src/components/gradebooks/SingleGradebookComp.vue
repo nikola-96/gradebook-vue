@@ -1,10 +1,16 @@
 <template>
   <div>
     <div class="btn-student" v-if="gradebook.isAuth">
-      <b-button :to="`/gradebooks/${gradebook.id}/students/create`">Add student</b-button>
-    </div>
-    <div v-if="gradebook.isAuth">
-      <b-button @click="handleDeleteGradebook" variant="danger">Delete Gradebook</b-button>
+      <b-button
+        class="btn-student-add"
+        :to="`/gradebooks/${gradebook.id}/students/create`"
+      >Add student</b-button>
+      <b-button
+        v-if="gradebook.isAuth"
+        @click="handleDeleteGradebook"
+        variant="danger"
+      >Delete Gradebook</b-button>
+      <b-button class="edit" to="/gradebooks/edit">Edit gradebook</b-button>
     </div>
     <div class="container-card">
       <b-card no-body :img-src="`${gradebook.url}`" img-alt="Professor dosen't have image." img-top>
@@ -58,5 +64,11 @@ export default {
 }
 .btn-student {
   margin-top: 45px;
+}
+.btn-student-add {
+  margin-right: 150px;
+}
+.edit {
+  margin-left: 150px;
 }
 </style>

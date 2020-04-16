@@ -33,8 +33,13 @@ class GradebookService {
         return response.data
     }
     async delete(id) {
-        console.log(id)
         await HTTP.delete(`/gradebooks/${id}`)
+    }
+    async put(gradebook, id) {
+        const response = await HTTP.post(`/gradebooks/${id}/edit`, gradebook)
+
+        return response.data
+
     }
 }
 const gradebookService = new GradebookService();

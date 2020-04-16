@@ -9,8 +9,8 @@
                 <b-row no-gutters>
                   <b-col md="6">
                     <b-card-img
-                      v-if="getSingleProfessorFromState.url"
-                      :src="`${getSingleProfessorFromState.url}`"
+                      v-if="getSingleProfessorFromState.urls[0]"
+                      :src="`${getSingleProfessorFromState.urls[0].imageUrl}`"
                       alt="Image"
                       class="rounded-0"
                     ></b-card-img>
@@ -21,9 +21,12 @@
                         <h1>{{getSingleProfessorFromState.first_name}} {{getSingleProfessorFromState.last_name}}</h1>
                       </b-card-header>
                       <b-card-text>
-                        <p
-                          v-if="getSingleProfessorFromState.gradebook"
-                        >Gradebook: {{getSingleProfessorFromState.gradebook.name}}</p>
+                        <p v-if="getSingleProfessorFromState.gradebook">
+                          Gradebook:
+                          <router-link
+                            :to="`/gradebook/${getSingleProfessorFromState.gradebook.id}`"
+                          >{{getSingleProfessorFromState.gradebook.name}}</router-link>
+                        </p>
                         <p v-else>Professor doesen't have a gradebook yet.</p>
                         <p v-if="students">Number of the students in the class: {{students}}</p>
                         <p v-else>For now there in is no students in class.</p>

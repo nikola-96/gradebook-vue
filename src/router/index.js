@@ -10,6 +10,8 @@ import MyGradebook from '../views/gradebooks/MyGradebook.vue'
 import ProfessorCreate from '../views/professors/ProfessorCreate.vue'
 import StudentsCreate from '../views/students/StudentsCreate.vue'
 import SingleGradebook from '../views/gradebooks/SingleGradebook.vue'
+import GradebookEdit from '../views/gradebooks/GradebookEdit.vue'
+import StudentEdit from '../views/students/StudentEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -67,6 +69,17 @@ const routes = [
     path: '/gradebook/:id',
     name: 'SingleGradebook',
     component: SingleGradebook
+  },
+  {
+    path: '/gradebooks/edit',
+    name: 'GradebookEdit',
+    component: GradebookEdit
+
+  },
+  {
+    path: "/gradebooks/student/edit/:id",
+    name: "StudentEdit",
+    component: StudentEdit
   }
 ]
 
