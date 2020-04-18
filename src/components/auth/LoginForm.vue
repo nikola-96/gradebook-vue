@@ -39,6 +39,7 @@
   </b-container>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "LoginForm",
   props: {

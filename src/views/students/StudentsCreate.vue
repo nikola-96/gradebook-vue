@@ -3,6 +3,11 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
+          <div
+            class="alert alert-danger"
+            v-for="(validationError, fieldName) in errors"
+            :key="`validation-errors-${fieldName}`"
+          >{{ ` ${validationError[0]}` }}</div>
           <students-form :student="student" :postStudent="postStudent" />
         </b-col>
       </b-row>
@@ -20,13 +25,21 @@ export default {
   },
   data() {
     return {
-      student: {}
+      student: {},
+      errors: {}
     };
   },
   methods: {
     async postStudent(student) {
-      await studentService.post(student);
-      this.$router.go(-1);
+      try {
+        await studentService.post(student);
+        this.$router.go(-1);
+      } catch (error) {
+        if (error.response.status === 422) {
+          this.errors = {};
+          this.errors = Object.assign({}, {}, error.response.data.errors);
+        }
+      }
     }
   },
   created() {

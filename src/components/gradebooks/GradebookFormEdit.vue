@@ -36,7 +36,7 @@
       </b-jumbotron>
     </div>
     <div>
-      <p>
+      <p v-if="gradebookForEdit.student">
         <strong>Students:</strong>
       </p>
       <b-list-group>

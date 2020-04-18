@@ -13,7 +13,7 @@
       <b-button class="edit" to="/gradebooks/edit">Edit gradebook</b-button>
     </div>
     <div class="container-card">
-      <b-card no-body :img-src="`${gradebook.url}`" img-alt="Professor dosen't have image." img-top>
+      <b-card>
         <template v-slot:header>
           <h4
             v-if="gradebook.professor"

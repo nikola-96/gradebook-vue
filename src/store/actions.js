@@ -77,6 +77,12 @@ export default {
     async getSingleStudent({ commit }, id) {
         const response = await studentService.getSingleStudent(id)
         commit("setSingleStudent", response)
+    },
+    setingErrors({ commit }, errors) {
+        commit('setErrors', errors);
+    },
+    setMyGradebookToUndifined({ commit }) {
+        commit('setingMyGradebookToNull')
     }
 }
 

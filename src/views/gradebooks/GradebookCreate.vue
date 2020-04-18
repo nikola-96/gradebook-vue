@@ -3,6 +3,11 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
+          <div
+            class="alert alert-danger"
+            v-for="(validationError, fieldName) in errors"
+            :key="`validation-errors-${fieldName}`"
+          >{{ ` ${validationError[0]}` }}</div>
           <gradebook-form
             :avalibleProfessors="getAvalibleProfessorsFromState"
             :handlePostGradebook="handlePostGradebook"
@@ -28,7 +33,12 @@ export default {
         const response = await gradebookService.postGradebook(gradebook);
         this.$router.push("/gradebooks");
       } catch (error) {
-        console.log(error.response);
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errors = {};
+            this.errors = Object.assign({}, {}, error.response.data.errors);
+          }
+        }
       }
     }
   },
@@ -37,8 +47,16 @@ export default {
   },
   async created() {
     await this.getAvalibleProfessors();
+  },
+  data() {
+    return {
+      errors: []
+    };
   }
 };
 </script>
 <style>
+.alert {
+  margin-top: 50px;
+}
 </style>

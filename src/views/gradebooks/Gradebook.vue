@@ -5,7 +5,7 @@
         <b-col>
           <h1>The Gradebooks List</h1>
           <hr />
-          <search-gradebook />
+          <search-gradebook :handleLoader="handleLoader" />
           <gradebook-list :gradebooks="getLoadedGradebooks" :loadGradebooks="handleLoader" />
         </b-col>
       </b-row>
@@ -32,7 +32,7 @@ export default {
     ]),
 
     handleLoader() {
-      if (this.counter() == 0) {
+      if (this.counter() == 0 && this.counter <= 10) {
         this.handleLoadButtonStatus(true);
 
         return;
@@ -74,7 +74,6 @@ export default {
     await this.getAllGradebooks();
     this.getIntitalLoadedGradebooks();
     this.handleLoadButtonStatus(false);
-    this.handleLoader();
   }
 };
 </script>

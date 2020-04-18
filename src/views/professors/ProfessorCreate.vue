@@ -3,6 +3,11 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
+          <div
+            class="alert alert-danger"
+            v-for="(validationError, fieldName) in errors"
+            :key="`validation-errors-${fieldName}`"
+          >{{ ` ${validationError[0]}` }}</div>
           <professor-form
             :gradebooks="getAvalibleGradebooksFromState"
             :handlePostProffesor="handlePostProffesor"
@@ -24,8 +29,17 @@ export default {
   methods: {
     ...mapActions(["getAvalibleGradebooks"]),
     async handlePostProffesor(professor) {
-      await professorService.postProfessor(professor);
-      this.$router.push("/professors");
+      try {
+        await professorService.postProfessor(professor);
+        this.$router.push("/professors");
+      } catch (error) {
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errors = {};
+            this.errors = Object.assign({}, {}, error.response.data.errors);
+          }
+        }
+      }
     }
   },
   computed: {
@@ -33,6 +47,16 @@ export default {
   },
   async created() {
     await this.getAvalibleGradebooks();
+  },
+  data() {
+    return {
+      errors: {}
+    };
   }
 };
 </script>
+<style >
+.alert {
+  margin-top: 50px;
+}
+</style>

@@ -20,7 +20,9 @@
                   >{{ professor.first_name }} {{ professor.last_name }}</router-link>
                 </h1>
                 <p v-if="professor.gradebook">
-                  <router-link :to="`/gradebook/${professor.gradebook.id}`"></router-link>
+                  <router-link
+                    :to="`/gradebook/${professor.gradebook.id}`"
+                  >{{professor.gradebook.name}}</router-link>
                 </p>
                 <p v-else>Professor is avalible</p>
               </b-card-text>

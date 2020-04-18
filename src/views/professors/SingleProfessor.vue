@@ -7,10 +7,11 @@
             <div>
               <b-card no-body class="overflow-hidden" style="max-height: 440px;">
                 <b-row no-gutters>
-                  <b-col md="6">
+                  <b-col md="6" v-if="getSingleProfessorFromState.urls">
                     <b-card-img
                       v-if="getSingleProfessorFromState.urls[0]"
                       :src="`${getSingleProfessorFromState.urls[0].imageUrl}`"
+                      img-alt="Professor dosen't have image."
                       alt="Image"
                       class="rounded-0"
                     ></b-card-img>

@@ -23,6 +23,7 @@ export default new Vuex.Store({
     singleGradebook: {},
     comments: [],
     singleStudent: {},
+    errors: []
 
   },
   getters,

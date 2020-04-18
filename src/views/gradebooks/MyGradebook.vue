@@ -16,6 +16,11 @@
               <p>
                 <strong>Comments:</strong>
               </p>
+              <div
+                class="alert alert-danger"
+                v-for="(validationError, fieldName) in errors"
+                :key="`validation-errors-${fieldName}`"
+              >{{ ` ${validationError[0]}` }}</div>
               <gradebook-comments
                 :comments="getCommentsFromState"
                 :handleDeleteComment="handleDeleteComment"
@@ -49,10 +54,15 @@ export default {
       comment.gradebook_id = this.getMyGradebookFromState.gradebook.id;
       try {
         await commentService.postComment(comment);
+        await this.getComments(this.getMyGradebookFromState.gradebook.id);
       } catch (error) {
-        console.log(error);
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errors = {};
+            this.errors = Object.assign({}, {}, error.response.data.errors);
+          }
+        }
       }
-      await this.getComments(this.getMyGradebookFromState.gradebook.id);
     },
     async handleDeleteComment(id) {
       if (confirm("Are you sure?")) {
@@ -78,7 +88,8 @@ export default {
   },
   data() {
     return {
-      comment: {}
+      comment: {},
+      errors: {}
     };
   }
 };

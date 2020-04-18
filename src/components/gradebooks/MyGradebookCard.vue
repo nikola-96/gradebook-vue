@@ -1,7 +1,8 @@
 <template>
-  <div class="proba">
+  <div class="proba" v-if="professor.gradebook">
     <div class="btn-student">
       <b-button
+        v-if="professor.gradebook.id"
         class="student"
         :to="`/gradebooks/${professor.gradebook.id}/students/create`"
       >Add student</b-button>
@@ -9,13 +10,7 @@
       <b-button class="edit" to="/gradebooks/edit">Edit gradebook</b-button>
     </div>
     <div class="container-card">
-      <b-card
-        no-body
-        :img-src="`${professor.url}`"
-        img-alt="Professor dosen't have image."
-        img-top
-        style="max-heigth: 100%;"
-      >
+      <b-card>
         <template v-slot:header>
           <h4 class="mb-0">Profesor: {{ professor.first_name }} {{ professor.last_name }}</h4>
         </template>

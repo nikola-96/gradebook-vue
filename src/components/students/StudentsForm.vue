@@ -10,7 +10,6 @@
             </b-col>
             <b-col sm="7">
               <b-form-input
-                required
                 id="name"
                 type="text"
                 placeholder="Enter student name"
@@ -25,7 +24,6 @@
             <b-col sm="7">
               <b-form-input
                 id="last_name"
-                required
                 placeholder="Enter student last name"
                 v-model="student.last_name"
               ></b-form-input>
@@ -36,7 +34,7 @@
               <label for="url">Image url:</label>
             </b-col>
             <b-col sm="7">
-              <b-form-input required id="url" placeholder="Enter image url" v-model="student.url"></b-form-input>
+              <b-form-input id="url" placeholder="Enter image url" v-model="student.url"></b-form-input>
             </b-col>
           </b-row>
           <b-button variant="primary" type="submit">More Info</b-button>

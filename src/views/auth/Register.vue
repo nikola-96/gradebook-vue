@@ -1,10 +1,11 @@
 <template>
   <div>
-    <ul v-if="errors">
-      <li v-for="e in errors" :key="e">{{e}}</li>
-    </ul>
-    <div></div>
-    <errors v-if="errors" />
+    <div
+      class="alert alert-danger"
+      v-for="(validationError, fieldName) in errors"
+      :key="`validation-errors-${fieldName}`"
+    >{{ ` ${validationError[0]}` }}</div>
+
     <register-form :user="user" :handleRegister="handleRegister" />
   </div>
 </template>
@@ -12,22 +13,15 @@
 import RegisterForm from "@/components/auth/RegisterForm";
 import authService from "@/services/AuthService.js";
 import { mapActions, mapGetters } from "vuex";
-import Errors from "@/components/errors/Errors";
 
 export default {
   name: "Register",
   components: {
-    RegisterForm,
-    Errors
+    RegisterForm
   },
   data() {
     return {
       user: {},
-      // first_name: "",
-      // last_name: "",
-      // password: "",
-      // password_confirmation: "",
-      // terms: "",
       errors: {}
     };
   },
@@ -39,15 +33,19 @@ export default {
         this.changeUserStatus(true);
         this.$router.push("/gradebooks");
       } catch (error) {
-        this.errors.first_name = error.response.data.errors.first_name;
-        this.errors.last_name = error.response.data.errors.last_name;
-        this.errors.password = error.response.data.errors.password;
-        this.errors.password_confirmation =
-          error.response.data.errors.password_confirmation;
-        this.errors.terms = error.response.data.errors.terms_conditions;
-        console.log(this.errors);
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errors = {};
+            this.errors = Object.assign({}, {}, error.response.data.errors);
+          }
+        }
       }
     }
   }
 };
 </script>
+<style >
+.alert {
+  margin-top: 50px;
+}
+</style>

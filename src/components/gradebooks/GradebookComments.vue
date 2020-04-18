@@ -1,5 +1,8 @@
 <template>
   <div v-if="comments">
+    <p>
+      <strong>Comments:</strong>
+    </p>
     <b-card align="center" v-for="comment in comments" :key="comment.id">
       <b-card-text>
         <p>

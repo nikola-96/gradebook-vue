@@ -5,7 +5,7 @@
         <b-col>
           <h1>All Professors</h1>
           <hr />
-          <search-professor />
+          <search-professor :handleLoader="handleLoader" />
           <hr />
           <professors-list :professors="getLoadedProfessors" :loadProfessors="handleLoader" />
         </b-col>
@@ -32,7 +32,7 @@ export default {
       "handleLoadingProfessors"
     ]),
     handleLoader() {
-      if (this.counter() == 0) {
+      if (this.counter() == 0 && this.counter <= 10) {
         this.handleLoadButtonStatus(true);
 
         return;
@@ -73,8 +73,7 @@ export default {
     await this.getAllProfessors();
     this.getIntitalLoadedProfessors();
     this.handleLoadButtonStatus(false);
-    this.handleLoader();
-    console.log(this.getLoadedProfessors);
+    // this.handleLoader();
   }
 };
 </script>

@@ -15,4 +15,5 @@ export default {
     getSingleGradebookFromState: state => state.singleGradebook,
     getCommentsFromState: state => state.comments,
     getSingleStudentFromState: state => state.singleStudent,
+    getErrors: state => state.errors
 }

@@ -64,6 +64,12 @@ export default {
     },
     setSingleStudent(state, response) {
         state.singleStudent = response
+    },
+    setErrors(state, errors) {
+        state.errors = errors
+    },
+    setingMyGradebookToNull(state) {
+        state.myGradebook = {}
     }
 
 }

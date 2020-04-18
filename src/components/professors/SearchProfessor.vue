@@ -19,11 +19,18 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "SearchProfessor",
+  props: {
+    handleLoader: {
+      type: Function,
+      required: true
+    }
+  },
   methods: {
     ...mapActions(["getIntitalLoadedProfessors", "getFiltredProfessors"]),
     async searchTerm() {
       await this.getFiltredProfessors(this.term);
       this.getIntitalLoadedProfessors();
+      this.handleLoader();
     }
   },
   data() {

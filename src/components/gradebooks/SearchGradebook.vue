@@ -18,11 +18,22 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "SearchComponent",
+  props: {
+    handleLoader: {
+      type: Function,
+      required: true
+    }
+  },
   methods: {
     ...mapActions(["getFiltredGradebooks", "getIntitalLoadedGradebooks"]),
     async searchTerm() {
+      if (!this.term) {
+        this.getIntitalLoadedGradebooks();
+        this.handleLoader();
+      }
       await this.getFiltredGradebooks(this.term);
       this.getIntitalLoadedGradebooks();
+      this.handleLoader();
     }
   },
   data() {
