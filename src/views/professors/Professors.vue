@@ -32,7 +32,7 @@ export default {
       "handleLoadingProfessors"
     ]),
     handleLoader() {
-      if (this.counter() == 0 && this.counter <= 10) {
+      if (this.counter() == 0) {
         this.handleLoadButtonStatus(true);
 
         return;
@@ -73,7 +73,9 @@ export default {
     await this.getAllProfessors();
     this.getIntitalLoadedProfessors();
     this.handleLoadButtonStatus(false);
-    // this.handleLoader();
+    if (this.counter() == 0 || this.counter() >= 10) {
+      this.handleLoadButtonStatus(true);
+    }
   }
 };
 </script>

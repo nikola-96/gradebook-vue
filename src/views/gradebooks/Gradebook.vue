@@ -32,7 +32,7 @@ export default {
     ]),
 
     handleLoader() {
-      if (this.counter() == 0 && this.counter <= 10) {
+      if (this.counter() == 0) {
         this.handleLoadButtonStatus(true);
 
         return;
@@ -74,6 +74,9 @@ export default {
     await this.getAllGradebooks();
     this.getIntitalLoadedGradebooks();
     this.handleLoadButtonStatus(false);
+    if (this.counter() == 0 || this.counter() >= 10) {
+      this.handleLoadButtonStatus(true);
+    }
   }
 };
 </script>
