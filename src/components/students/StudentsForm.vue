@@ -31,13 +31,13 @@
           </b-row>
           <b-row class="my-1">
             <b-col sm="2">
-              <label for="url">Image url:</label>
+              <label for="imageUrl">Image url:</label>
             </b-col>
             <b-col sm="7">
-              <b-form-input id="url" placeholder="Enter image url" v-model="student.url"></b-form-input>
+              <b-form-input id="url" placeholder="Enter image url" v-model="student.imageUrl"></b-form-input>
             </b-col>
           </b-row>
-          <b-button variant="primary" type="submit">More Info</b-button>
+          <b-button variant="primary" type="submit">Create</b-button>
         </form>
       </b-jumbotron>
     </div>

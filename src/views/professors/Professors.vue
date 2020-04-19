@@ -73,9 +73,6 @@ export default {
     await this.getAllProfessors();
     this.getIntitalLoadedProfessors();
     this.handleLoadButtonStatus(false);
-    if (this.counter() == 0 || this.counter() >= 10) {
-      this.handleLoadButtonStatus(true);
-    }
   }
 };
 </script>

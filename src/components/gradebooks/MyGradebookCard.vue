@@ -19,7 +19,7 @@
           <b-card-title>Gradebook: {{ professor.gradebook.name }}</b-card-title>
         </b-card-body>
         <hr />
-        <b-list-group flush v-if="professor.students">
+        <b-list-group flush v-if="professor.students[0]">
           <p>
             <strong>Students:</strong>
           </p>
@@ -28,6 +28,9 @@
             :key="student.id"
           >{{student.first_name}} {{student.last_name}}</b-list-group-item>
         </b-list-group>
+        <p v-else>
+          <strong>There is no students in class.</strong>
+        </p>
       </b-card>
     </div>
   </div>

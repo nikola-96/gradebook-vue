@@ -13,9 +13,6 @@
               <h1 v-else class="heading-else">You don't have gradebook yet.</h1>
             </div>
             <div class="comments" v-if="getMyGradebookFromState.gradebook">
-              <p>
-                <strong>Comments:</strong>
-              </p>
               <div
                 class="alert alert-danger"
                 v-for="(validationError, fieldName) in errors"

@@ -4,7 +4,7 @@
       <b-row>
         <b-col>
           <students-form-edit
-            v-if="getSingleStudentFromState"
+            v-if="getSingleStudentFromState.first_name"
             :student="getSingleStudentFromState"
             :handleEditAction="handleEditAction"
           />
@@ -22,9 +22,10 @@ export default {
     StudentsFormEdit
   },
   methods: {
-    ...mapActions(["getSingleStudent"]),
+    ...mapActions(["getSingleStudent", "setStudentToNull"]),
     async handleEditAction(student, id) {
       const response = await studentService.updateStudent(student, id);
+      this.setStudentToNull();
       this.$router.go(-1);
     }
   },

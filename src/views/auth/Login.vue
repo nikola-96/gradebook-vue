@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div
-      class="alert alert-danger"
-      v-for="(validationError, fieldName) in errors"
-      :key="`validation-errors-${fieldName}`"
-    >{{ ` ${validationError[0]}` }}</div>
+    <div class="alert alert-danger" v-if="errors">{{ ` ${errors}` }}</div>
 
     <login-form :user="user" :handleLogin="handleLogin" />
   </div>
@@ -23,7 +19,7 @@ export default {
   data() {
     return {
       user: {},
-      errors: {}
+      errors: ""
     };
   },
   methods: {
@@ -35,9 +31,8 @@ export default {
         this.$router.push("/gradebooks");
       } catch (error) {
         if (error.response) {
-          if (error.response.status === 422) {
-            this.errors = {};
-            this.errors = Object.assign({}, {}, error.response.data.errors);
+          if (error.response.status === 401) {
+            this.errors = error.response.data.error;
           }
         }
       }

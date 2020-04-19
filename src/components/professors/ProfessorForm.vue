@@ -62,8 +62,8 @@
             </b-form-group>
           </div>
 
-          <b-form-select class="mb-4" v-if="gradebooks">
-            <b-form-select-option :value="null">Please select gradebook</b-form-select-option>
+          <b-form-select required v-model="professor.gradebook_id" class="mb-4" v-if="gradebooks">
+            <b-form-select-option :value="null" disabled>Please select gradebook</b-form-select-option>
             <b-form-select-option
               v-for="gradebook in gradebooks"
               :key="gradebook.id"
@@ -112,6 +112,7 @@ export default {
       this.addImage = true;
     },
     postProfessor() {
+      console.log(this.professor);
       this.inputs.forEach(input => {
         this.imageUrl.push(input.name);
       });
@@ -126,9 +127,7 @@ export default {
       this.inputs.splice(index, 1);
     }
   },
-  created() {
-    this.name = "dkskd";
-  }
+  created() {}
 };
 </script>
 <style scoped>

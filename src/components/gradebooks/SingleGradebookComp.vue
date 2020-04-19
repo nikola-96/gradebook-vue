@@ -34,6 +34,9 @@
             :key="student.id"
           >{{student.first_name}} {{student.last_name}}</b-list-group-item>
         </b-list-group>
+        <p v-else>
+          <strong>There is no students in class.</strong>
+        </p>
       </b-card>
     </div>
   </div>

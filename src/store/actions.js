@@ -25,11 +25,6 @@ export default {
         const response = await gradebookService.getSingleGradebook(id)
         commit("setSingleGradebook", response)
     },
-    // async postGradebook({ commit }, gradebook){
-    //     const response = await gradebookService.postGradebook(gradebookService)
-
-    // },
-    //
     getIntitalLoadedGradebooks({ commit }) {
         commit("setInitialLoadedGradebooks")
     },
@@ -83,6 +78,9 @@ export default {
     },
     setMyGradebookToUndifined({ commit }) {
         commit('setingMyGradebookToNull')
+    },
+    setStudentToNull({ commit }) {
+        commit('setStudentToNull')
     }
 }
 

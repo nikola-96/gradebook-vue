@@ -76,6 +76,9 @@ export default {
       this.studentEdited.last_name = this.last_name;
       this.studentEdited.imageUrl = this.imageUrl;
       this.handleEditAction(this.studentEdited, this.student.id);
+      this.first_name = "";
+      this.last_name = "";
+      this.imageUrl = "";
     }
   }
 };

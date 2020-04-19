@@ -20,7 +20,7 @@
           description="Pleasse select avalible professor."
         >
           <b-form-select v-model="gradebook.professor_id" class="mb-4">
-            <b-form-select-option :value="null">Please select professor</b-form-select-option>
+            <b-form-select-option :value="null" disabled>Please select professor</b-form-select-option>
             <b-form-select-option
               v-for="prof in avalibleProfessors"
               :key="prof.id"
@@ -56,7 +56,6 @@ export default {
       this.$router.push("/gradebooks");
     }
   },
-  created() {},
   data() {
     return {
       selected: {},
