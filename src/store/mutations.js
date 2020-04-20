@@ -71,7 +71,7 @@ export default {
     setingMyGradebookToNull(state) {
         state.myGradebook = {}
     },
-    setStudentToNull() {
+    setStudentToNull(state) {
         state.singleStudent = {}
     }
 
