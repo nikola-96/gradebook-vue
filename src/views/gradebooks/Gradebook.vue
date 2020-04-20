@@ -5,7 +5,7 @@
         <b-col>
           <h1>The Gradebooks List</h1>
           <hr />
-          <search-gradebook :handleLoader="handleLoader" />
+          <search-gradebook :handleLoader="handleLoader" :counter="counter" />
           <gradebook-list :gradebooks="getLoadedGradebooks" :loadGradebooks="handleLoader" />
         </b-col>
       </b-row>

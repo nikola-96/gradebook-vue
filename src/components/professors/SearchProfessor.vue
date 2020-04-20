@@ -2,9 +2,7 @@
   <div>
     <b-container fluid>
       <b-row class="my-1">
-        <b-col sm="2" style="margin-right: 20%;">
-          <!-- <label for="input-default">Default:</label> -->
-        </b-col>
+        <b-col sm="2" style="margin-right: 20%;"></b-col>
         <b-col sm="3">
           <b-form-input id="input-default" placeholder="Search professor" v-model="term"></b-form-input>
         </b-col>
@@ -23,14 +21,26 @@ export default {
     handleLoader: {
       type: Function,
       required: true
+    },
+    counter: {
+      type: Function,
+      required: false
     }
   },
   methods: {
-    ...mapActions(["getIntitalLoadedProfessors", "getFiltredProfessors"]),
+    ...mapActions([
+      "getIntitalLoadedProfessors",
+      "getFiltredProfessors",
+      "handleLoadButtonStatus"
+    ]),
     async searchTerm() {
       await this.getFiltredProfessors(this.term);
       this.getIntitalLoadedProfessors();
-      this.handleLoader();
+      if (this.counter() == 0 || this.counter() >= 10) {
+        this.handleLoadButtonStatus(true);
+      } else {
+        this.handleLoadButtonStatus(false);
+      }
     }
   },
   data() {

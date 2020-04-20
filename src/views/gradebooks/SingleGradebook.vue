@@ -12,6 +12,12 @@
             :comments="getCommentsFromState"
             :handleDeleteComment="handleDeleteComment"
           />
+          <div
+            class="alert alert-danger"
+            v-for="(validationError, fieldName) in errors"
+            :key="`validation-errors-${fieldName}`"
+          >{{ ` ${validationError[0]}` }}</div>
+
           <gradebook-comment-form class="comment-form" :postComment="postComment" />
         </b-col>
       </b-row>
@@ -40,7 +46,12 @@ export default {
       try {
         await commentService.postComment(comment);
       } catch (error) {
-        console.log(error);
+        if (error.response) {
+          if (error.response.status === 422) {
+            this.errors = {};
+            this.errors = Object.assign({}, {}, error.response.data.errors);
+          }
+        }
       }
       await this.getComments(this.id);
     },
@@ -67,7 +78,8 @@ export default {
   },
   data() {
     return {
-      id: 0
+      id: 0,
+      errors: {}
     };
   }
 };

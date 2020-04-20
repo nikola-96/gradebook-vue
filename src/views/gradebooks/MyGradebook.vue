@@ -46,7 +46,11 @@ export default {
     GradebookCommentForm
   },
   methods: {
-    ...mapActions(["getMyGradebook", "getComments"]),
+    ...mapActions([
+      "getMyGradebook",
+      "getComments",
+      "setMyGradebookToUndifined"
+    ]),
     async postComment(comment) {
       comment.gradebook_id = this.getMyGradebookFromState.gradebook.id;
       try {
@@ -70,6 +74,7 @@ export default {
     async deleteGradebook(id) {
       if (confirm("Are you sure?")) {
         await gradebookService.delete(id);
+        this.setMyGradebookToUndifined();
         this.$router.push("/gradebooks");
       }
     }
@@ -78,10 +83,12 @@ export default {
     ...mapGetters(["getMyGradebookFromState", "getCommentsFromState"])
   },
   async created() {
-    await this.getMyGradebook();
-    if (this.getMyGradebookFromState.gradebook) {
-      await this.getComments(this.getMyGradebookFromState.gradebook.id);
-    }
+    try {
+      await this.getMyGradebook();
+      if (this.getMyGradebookFromState.gradebook) {
+        await this.getComments(this.getMyGradebookFromState.gradebook.id);
+      }
+    } catch (error) {}
   },
   data() {
     return {

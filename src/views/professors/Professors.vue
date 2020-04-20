@@ -5,7 +5,7 @@
         <b-col>
           <h1>All Professors</h1>
           <hr />
-          <search-professor :handleLoader="handleLoader" />
+          <search-professor :handleLoader="handleLoader" :counter="counter" />
           <hr />
           <professors-list :professors="getLoadedProfessors" :loadProfessors="handleLoader" />
         </b-col>

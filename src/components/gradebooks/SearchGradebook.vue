@@ -2,9 +2,7 @@
   <div>
     <b-container fluid>
       <b-row class="my-1">
-        <b-col sm="2" style="margin-right: 20%;">
-          <!-- <label for="input-default">Default:</label> -->
-        </b-col>
+        <b-col sm="2" style="margin-right: 20%;"></b-col>
         <b-col sm="3">
           <b-form-input id="input-default" placeholder="Search gradebook" v-model="term"></b-form-input>
         </b-col>
@@ -22,10 +20,18 @@ export default {
     handleLoader: {
       type: Function,
       required: true
+    },
+    counter: {
+      type: Function,
+      required: false
     }
   },
   methods: {
-    ...mapActions(["getFiltredGradebooks", "getIntitalLoadedGradebooks"]),
+    ...mapActions([
+      "getFiltredGradebooks",
+      "getIntitalLoadedGradebooks",
+      "handleLoadButtonStatus"
+    ]),
     async searchTerm() {
       if (!this.term) {
         this.getIntitalLoadedGradebooks();
@@ -33,7 +39,11 @@ export default {
       }
       await this.getFiltredGradebooks(this.term);
       this.getIntitalLoadedGradebooks();
-      this.handleLoader();
+      if (this.counter() == 0 || this.counter() >= 10) {
+        this.handleLoadButtonStatus(true);
+      } else {
+        this.handleLoadButtonStatus(false);
+      }
     }
   },
   data() {
