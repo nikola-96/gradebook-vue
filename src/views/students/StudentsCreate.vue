@@ -32,6 +32,7 @@ export default {
   methods: {
     async postStudent(student) {
       try {
+        student.gradebook_id = this.$route.params.id;
         await studentService.post(student);
         this.$router.go(-1);
       } catch (error) {

@@ -7,7 +7,6 @@ class StudentService {
         return response;
     }
     async deleteStudent(id) {
-        console.log(id)
         await HTTP.delete(`/gradebooks/students/${id}`)
     }
     async getSingleStudent(id) {

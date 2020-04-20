@@ -112,7 +112,6 @@ export default {
       this.addImage = true;
     },
     postProfessor() {
-      console.log(this.professor);
       this.inputs.forEach(input => {
         this.imageUrl.push(input.name);
       });
